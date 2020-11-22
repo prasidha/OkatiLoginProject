@@ -103,7 +103,7 @@ function LoginPage({setIsLoggedIn}) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2" style={{fontStyle:'italic'}}>
+              <Link href="#" variant="body2" style={{fontStyle:'italic',color:'#009653'}}>
                 Forgot password?
               </Link>
             </Grid>

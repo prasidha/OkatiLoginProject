@@ -40,7 +40,6 @@ function LoginPage({setIsLoggedIn}) {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const[users,setUsers]=useState([]);
     const [confirmPassword, setConfirmPassword] = useState("");
     const[emailError,setEmailError]=useState("");
     const[passError,setPassError]=useState("");
@@ -48,7 +47,10 @@ function LoginPage({setIsLoggedIn}) {
     const passwordValidation =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
     const emailValidation=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-    const registerForm = () => {
+    const registerForm = (e) => {
+      e.preventDefault();
+      
+    
 
       function isValidEmail() {
 
@@ -71,20 +73,23 @@ function LoginPage({setIsLoggedIn}) {
 
       if((password !== "" && confirmPassword !=="") && (password.match(passwordValidation)) &&(password === confirmPassword) ){
         setPassError(false)
+       
         let user = {
           email,
           password
         }
-       
+        
         localStorage.setItem("users",JSON.stringify(user))
+        setIsLoggedIn(true)
        
+        
       }
+
       else{
         // setPassError(true)
         alert("password is invalid")
       }
-      
-   
+    
            
     }
     return (

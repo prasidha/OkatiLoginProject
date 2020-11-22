@@ -2,11 +2,12 @@ import React from 'react'
 import {IconButton} from '@material-ui/core'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 
-function HomePage() {
+function HomePage({setIsLoggedIn}) {
     return (
-        <div style={{display:'flex',justifyContent:'space-between'}}>
-            <h1 style={{textAlign:'center'}}>welcome to okhati </h1>
-            <IconButton><ExitToAppIcon/>logout</IconButton>
+        <div>
+           
+            <div style={{float:'right'}} > <IconButton onClick={()=>setIsLoggedIn(false)}><ExitToAppIcon/>logout</IconButton> </div>
+            <div> <h1 style={{color:'green'}}>welcome to okhati page ...</h1></div>
         </div>
     )
 }
