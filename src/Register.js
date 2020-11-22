@@ -1,6 +1,6 @@
 import React, { useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import {TextField, Grid, Button} from '@material-ui/core'
+import {TextField, Button} from '@material-ui/core'
 import MainPage from './MainPage'
 
  
@@ -71,13 +71,12 @@ function LoginPage({setIsLoggedIn}) {
 
       if((password !== "" && confirmPassword !=="") && (password.match(passwordValidation)) &&(password === confirmPassword) ){
         setPassError(false)
-        let user ={
+        let user = {
           email,
           password
         }
        
         localStorage.setItem("users",JSON.stringify(user))
-        setIsLoggedIn(true);
        
       }
       else{

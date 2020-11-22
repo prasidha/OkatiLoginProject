@@ -15,11 +15,13 @@ const useStyles = makeStyles((theme) => ({
     margin:'auto',
     backgroundColor:"white",
     borderRadius:'12px',
+  
   },
   form: {
     width: '70%', 
     marginTop: theme.spacing(1),
-    height:'500px'
+    height:'500px',
+   
   },
   text:{
        fontStyle:'italic',
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function LoginPage() {
+function LoginPage({setIsLoggedIn}) {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -46,8 +48,15 @@ function LoginPage() {
 
     const logIn = () => {
       
-    
-       
+       let getInfo = JSON.parse(localStorage.getItem('users'))
+         
+       if(email === getInfo.email && password === getInfo.password){
+         setIsLoggedIn(true)
+       }
+       else{
+         alert("you havent registered yet")
+       }
+
            
     }
     return (
