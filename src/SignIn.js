@@ -42,8 +42,7 @@ function LoginPage({setIsLoggedIn}) {
     const classes = useStyles();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const[emailError,setEmailError]=useState("");
-    const[passError,setPassError]=useState("");
+  
    
 
     const logIn = () => {

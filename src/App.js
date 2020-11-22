@@ -11,8 +11,8 @@ function App() {
   const [isLoggedIn,setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(true)
-  }, [])
+    
+  }, [isLoggedIn])
 
   return (
     <div className="App">

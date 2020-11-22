@@ -41,8 +41,8 @@ function LoginPage({setIsLoggedIn}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const[emailError,setEmailError]=useState("");
-    const[passError,setPassError]=useState("");
+    const[emailError,setEmailError]=useState(false);
+    const[passError,setPassError]=useState(false);
 
     const passwordValidation =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
     const emailValidation=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
@@ -86,7 +86,7 @@ function LoginPage({setIsLoggedIn}) {
       }
 
       else{
-        // setPassError(true)
+       
         alert("password is invalid")
       }
     
@@ -96,8 +96,6 @@ function LoginPage({setIsLoggedIn}) {
       <>
       <MainPage/>
         <div className={classes.paper} >
-  { /*     <Link to="/signin"><Button className={classes.button}>sign In</Button></Link> 
-    <Link to="/register"> <Button className={classes.button}>register</Button></Link> */}
     
                 <form className={classes.form} onSubmit={(e)=> registerForm (e)}>
                 <h1 className={classes.text}>Register form</h1>
