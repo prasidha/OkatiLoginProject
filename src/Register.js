@@ -45,7 +45,7 @@ function LoginPage({setIsLoggedIn}) {
     const[passError,setPassError]=useState(false);
 
     const passwordValidation =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-    const emailValidation=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    const emailValidation=/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/
 
     const registerForm = (e) => {
       e.preventDefault();
@@ -78,10 +78,9 @@ function LoginPage({setIsLoggedIn}) {
           email,
           password
         }
-        
+   
         localStorage.setItem("users",JSON.stringify(user))
         setIsLoggedIn(true)
-       
         
       }
 

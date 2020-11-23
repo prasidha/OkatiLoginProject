@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles({
     paper:{
-      width:'20%',
+      width:'15%',
       margin:'auto',
       backgroundColor:'#009653',
       border:'1px solid',

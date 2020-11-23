@@ -43,21 +43,26 @@ function LoginPage({setIsLoggedIn}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
-   
+    const logIn = (e) => {
+      e.preventDefault()
 
-    const logIn = () => {
-      
        let getInfo = JSON.parse(localStorage.getItem('users'))
-         
+         if(!getInfo){
+           alert("No user registered")
+           return
+         }
        if(email === getInfo.email && password === getInfo.password){
          setIsLoggedIn(true)
+         
        }
        else{
-         alert("you havent registered yet")
+         alert("email or password is invalid")
+         setIsLoggedIn(false)
        }
 
            
     }
+  
     return (
        <> 
       <MainPage/>
@@ -116,3 +121,5 @@ function LoginPage({setIsLoggedIn}) {
 }
 
 export default LoginPage
+
+

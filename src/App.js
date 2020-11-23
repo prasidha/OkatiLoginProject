@@ -7,26 +7,32 @@ import HomePage from './HomePage'
 
 
 function App() {
+   
+   const [isLoggedIn,setIsLoggedIn] = useState(loginStatus());
+
+
+    useEffect(()=>{
+       localStorage.setItem("loginStatus",JSON.stringify(isLoggedIn))
+    },[isLoggedIn])
+
+    function loginStatus (){
+      const userInfo = JSON.parse(localStorage.getItem("loginstatus"))
+      return userInfo || false
+    }
  
-  const [isLoggedIn,setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    
-  }, [isLoggedIn])
-
+  
+  
   return (
     <div className="App">
-
       <Router>
-          <Switch>
+      <Switch>
+
+      <Route exact path="/" render={ () => isLoggedIn ? <Redirect to ="/home" /> : <SignIn setIsLoggedIn={setIsLoggedIn}/> } />
+      <Route exact path="/home" render={ () => isLoggedIn ?  <HomePage setIsLoggedIn={setIsLoggedIn}/> : <Redirect to ="/" />  } />
+      <Route exact path ="/register" render ={ () => isLoggedIn ? <Redirect to ="/home"/> : <Register setIsLoggedIn={setIsLoggedIn}/> } />
+
+      </Switch>
               
-              <Route exact path= "/"  render ={() => isLoggedIn ? <Redirect to="/home"/> : <SignIn setIsLoggedIn={setIsLoggedIn}/>} />
-           
-              <Route exact path="/home" render ={ () => isLoggedIn? <HomePage setIsLoggedIn={setIsLoggedIn}/> :<Redirect to ="/"/>}/>
-              <Route exact path="/register" render ={() => isLoggedIn ? <Redirect to="/home"/> : <Register setIsLoggedIn={setIsLoggedIn}/>}/>
-       
-  
-              </Switch>
       </Router>
     </div>
   );
